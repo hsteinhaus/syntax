@@ -193,7 +193,9 @@ public class UmsatzListMenu implements Extension
       // Noch abschneiden, falls er zu lang ist
       if (zweck.length() > 255)
         zweck = zweck.substring(0,255);
-      buchung.setText(zweck);
+      if (buchung.getText().isEmpty())
+          // Buchungstext aus Verwendungszweck nur übernehmen, falls nicht bereits durch Template vorgegeben
+          buchung.setText(zweck);
     }
     return buchung;
   }
